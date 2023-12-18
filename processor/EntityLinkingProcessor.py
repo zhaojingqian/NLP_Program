@@ -39,7 +39,7 @@ class EntityLinkingProcessor(DataProcessor):
             if i == 0:
                 continue
             guid = f'{set_type}-{i}'
-            text_a = line[1] + ' ' + line[3]
+            text_a = line[1] + ' [SEP] ' + line[3] ## add SEP token
             text_b = line[5]
             label = line[-1]
             examples.append(InputExample(

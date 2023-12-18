@@ -104,7 +104,7 @@ class EntityTypingModel(pl.LightningModule):
         
         val_loss = torch.stack(self.validation_losss).mean()
         val_acc = torch.stack(self.validation_accs).mean()
-        val_f1 = f1_score(self.labels_list, self.preds_list, average="micro")
+        val_f1 = f1_score(self.labels_list, self.preds_list, average="macro")
         tensorboard_logs = {'val_loss': val_loss, 'val_acc': val_acc, "val_f1": val_f1}
         print(f"Val Results: {tensorboard_logs}")
         self.log('val_acc', val_acc)

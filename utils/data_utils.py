@@ -16,6 +16,7 @@ from model.EntityTypingModel import EntityTypingModel
 from model.EntityLinkingPredictor import EntityLinkingPredictor
 from model.EntityTypingPredictor import EntityTypingPredictor
 from utils.config import *
+from pytorch_lightning.callbacks import ModelCheckpoint
 
 
 def preprocess_pickle_file():
@@ -25,9 +26,9 @@ def preprocess_pickle_file():
     read_pickle()
 
 
-def preprocess_tsv_file():
+def preprocess_tsv_file(is_nil=0):
     print("preprocess_tsv_file .......")
-    processor = DataFramePreprocessor()
+    processor = DataFramePreprocessor(is_nil)
     processor.run()
 
 
@@ -39,7 +40,7 @@ def generate_feature_pickle():
     processor = EntityTypingProcessor()
     processor.generate_feature_pickle(max_length=64)
 
-
+'''
 def train_entity_linking_model(ckpt_name):
     print("train_entity_linking_model .......")
     model = EntityLinkingModel(max_length=384, batch_size=64)
@@ -54,7 +55,7 @@ def train_entity_linking_model(ckpt_name):
     )
     trainer.fit(model)
     trainer.save_checkpoint(CKPT_PATH + ckpt_name)
-
+'''
 '''
 def train_entity_typing_model(ckpt_name):
     print("train_entity_typing_model .......")
