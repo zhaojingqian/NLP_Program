@@ -33,14 +33,14 @@ checkpoint_callback_f1 = ModelCheckpoint(
 
 def train_entity_typing_model(ckpt_name):
     print("train_entity_typing_model .......")
-    model = EntityTypingModel(max_length=64, batch_size=128)
+    model = EntityTypingModel(max_length=64, batch_size=64)
     trainer = pl.Trainer(
         max_epochs=6,
         precision="bf16-mixed",
         # accumulate_grad_batches=2,
         devices=[1],
         default_root_dir=ET_SAVE_PATH,
-        profiler='simple',
+        # profiler='simple',
         enable_checkpointing=True,
         callbacks=[checkpoint_callback_acc, checkpoint_callback_f1]
     )

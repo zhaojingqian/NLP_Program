@@ -35,7 +35,7 @@ DEVICE = torch.device('cuda:0' if torch.cuda.is_available else 'cpu')
 MAX_NEGS = 3 # Linking_data的最多负样本
 
 # 预训练模型路径
-PRETRAINED_PATH = "./ernie-3.0-base-zh"  # './roberta-chinese-large'
+PRETRAINED_PATH = './roberta-chinese-large' # "./ernie-3.0-base-zh"  # './roberta-chinese-large'
 
 # Pytorch路径
 PYTORCH_PATH = './torch-checkpoints/'
